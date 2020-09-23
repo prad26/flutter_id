@@ -12,7 +12,7 @@ class FlutterCard extends StatefulWidget {
 }
 
 class _FlutterCardState extends State<FlutterCard> {
-  int ninjaLevel = 0;
+  int ninjaLevel = 16;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,6 @@ class _FlutterCardState extends State<FlutterCard> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            ninjaLevel++;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),

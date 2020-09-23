@@ -6,7 +6,14 @@ void main() {
   ));
 }
 
-class FlutterCard extends StatelessWidget {
+class FlutterCard extends StatefulWidget {
+  @override
+  _FlutterCardState createState() => _FlutterCardState();
+}
+
+class _FlutterCardState extends State<FlutterCard> {
+  int ninjaLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +23,15 @@ class FlutterCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            ninjaLevel++;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -65,7 +81,7 @@ class FlutterCard extends StatelessWidget {
               height: 10,
             ),
             Text(
-              '9',
+              '$ninjaLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2,

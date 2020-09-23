@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'devices.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,6 +14,13 @@ class FlutterCard extends StatefulWidget {
 
 class _FlutterCardState extends State<FlutterCard> {
   int ninjaLevel = 16;
+  List<Devices> devices = [
+    Devices(company: 'HTC', model: 'HD Mini'),
+    Devices(company: 'HTC', model: 'One V'),
+    Devices(company: 'OnePlus', model: '2'),
+    Devices(company: 'OnePlus', model: '3T'),
+    Devices(company: 'OnePlus', model: '6T'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class _FlutterCardState extends State<FlutterCard> {
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/android.jpg'),
@@ -124,6 +132,34 @@ class _FlutterCardState extends State<FlutterCard> {
                   ),
                 ),
               ],
+            ),
+            Divider(
+              height: 60,
+              color: Colors.grey[700],
+            ),
+            Text(
+              'DEVICES',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: devices.map((device) {
+                return Container(
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                  child: Text('${device.company} ${device.model}',
+                      style: TextStyle(
+                        color: Colors.amberAccent,
+                        fontSize: 20,
+                        letterSpacing: 1,
+                      )),
+                );
+              }).toList(),
             ),
           ],
         ),

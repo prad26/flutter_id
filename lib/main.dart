@@ -80,14 +80,39 @@ class _FlutterCardState extends State<FlutterCard> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              '$ninjaLevel',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      ninjaLevel--;
+                    });
+                  },
+                  icon: Icon(Icons.remove),
+                  tooltip: 'Reduce Level',
+                  color: Colors.grey[500],
+                ),
+                Text(
+                  '$ninjaLevel',
+                  style: TextStyle(
+                    color: Colors.amberAccent[200],
+                    letterSpacing: 2,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      ninjaLevel++;
+                    });
+                  },
+                  icon: Icon(Icons.add),
+                  tooltip: 'Increase Level',
+                  color: Colors.grey[500],
+                ),
+              ],
             ),
             SizedBox(
               height: 30,

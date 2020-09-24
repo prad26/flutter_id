@@ -152,8 +152,12 @@ class _FlutterCardState extends State<FlutterCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: devices
                   .map((device) => DeviceCard(
-                        device: device,
-                      ))
+                      device: device,
+                      delete: () {
+                        setState(() {
+                          devices.remove(device);
+                        });
+                      }))
                   .toList(),
             ),
           ],

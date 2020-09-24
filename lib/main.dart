@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'devices.dart';
+import 'device_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,34 +22,6 @@ class _FlutterCardState extends State<FlutterCard> {
     Devices(company: 'OnePlus', model: '3T'),
     Devices(company: 'OnePlus', model: '6T'),
   ];
-
-  Widget devicesTemplate(device) {
-    return Card(
-      margin: EdgeInsets.fromLTRB(0, 12, 12, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              device.company,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.amberAccent,
-              ),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Text(
-              device.model,
-              style: TextStyle(fontSize: 16, color: Colors.amberAccent[700]),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +150,11 @@ class _FlutterCardState extends State<FlutterCard> {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: devices.map((device) => devicesTemplate(device)).toList(),
+              children: devices
+                  .map((device) => DeviceCard(
+                        device: device,
+                      ))
+                  .toList(),
             ),
           ],
         ),

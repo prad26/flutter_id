@@ -22,6 +22,34 @@ class _FlutterCardState extends State<FlutterCard> {
     Devices(company: 'OnePlus', model: '6T'),
   ];
 
+  Widget devicesTemplate(device) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(0, 12, 12, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(
+              device.company,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.amberAccent,
+              ),
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Text(
+              device.model,
+              style: TextStyle(fontSize: 16, color: Colors.amberAccent[700]),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,21 +173,11 @@ class _FlutterCardState extends State<FlutterCard> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 0,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: devices.map((device) {
-                return Container(
-                  padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                  child: Text('${device.company} ${device.model}',
-                      style: TextStyle(
-                        color: Colors.amberAccent,
-                        fontSize: 20,
-                        letterSpacing: 1,
-                      )),
-                );
-              }).toList(),
+              children: devices.map((device) => devicesTemplate(device)).toList(),
             ),
           ],
         ),

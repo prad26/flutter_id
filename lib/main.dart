@@ -18,6 +18,7 @@ class _FlutterCardState extends State<FlutterCard> {
   List<Devices> devices = [
     Devices(company: 'HTC', model: 'HD Mini'),
     Devices(company: 'HTC', model: 'One V'),
+    Devices(company: 'Xiaomi', model: 'Mi Pad'),
     Devices(company: 'OnePlus', model: '2'),
     Devices(company: 'OnePlus', model: '3T'),
     Devices(company: 'OnePlus', model: '6T'),
@@ -148,17 +149,22 @@ class _FlutterCardState extends State<FlutterCard> {
             SizedBox(
               height: 0,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: devices
-                  .map((device) => DeviceCard(
-                      device: device,
-                      delete: () {
-                        setState(() {
-                          devices.remove(device);
-                        });
-                      }))
-                  .toList(),
+            Expanded(
+              child: ListView.builder(
+                //shrinkWrap: true,
+                //physics: ScrollPhysics(),
+                itemCount: devices.length,
+                itemBuilder: (BuildContext _context, int index) {
+                  return DeviceCard(
+                    device: devices[index],
+                    delete: () {
+                      setState(() {
+                        devices.remove(devices[index]);
+                      });
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),
